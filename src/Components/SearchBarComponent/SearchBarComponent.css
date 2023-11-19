@@ -1,0 +1,46 @@
+:root {
+    --primary-gray-color: #64748B;
+}
+  
+/* Este es el contenedor para la barra de búsqueda */
+.search-container {
+    position: relative; /* Posicionamiento relativo para posicionar el ícono absolutamente dentro de este contenedor */
+    display: flex; /* Flexbox para centrar fácilmente el input */
+    justify-content: center; /* Centra el input horizontalmente */
+    align-items: center; /* Centra el input verticalmente */
+    width: 100%; /* Toma todo el ancho del contenedor padre */
+    max-width: 640px; /* Máximo ancho que puede tener la barra de búsqueda, ajusta según necesites */
+    margin: 2% auto; /* Margen automático para centrar el contenedor */
+}
+
+/* Estilo para la barra de búsqueda */
+.search-input {
+    width: 100%; /* Toma todo el ancho del contenedor .search-container */
+    padding: 1rem 1.4rem 1rem 3rem; /* Espacio interno: superior, derecho, inferior, izquierdo */
+    font-size: large; /* Tamaño de la fuente, ajusta según necesites */
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 20px; /* Bordes redondeados */
+    box-sizing: border-box; /* El ancho y alto incluyen el contenido, el padding y el borde */
+}
+
+/* Estilo para el ícono de búsqueda */
+.search-icon {
+    position: absolute;
+    left: 10px;
+    color: var(--primary-gray-color); /* Distancia desde el lado izquierdo del contenedor .search-container */
+    /* Ajusta según el tamaño de tu ícono y el padding del input */
+}
+
+/* Search label */
+.search-hint {
+    position: absolute;
+    right: 1.4rem; /* Alineado a la derecha con el mismo padding que el input */
+    top: 50%; /* Centrado verticalmente */
+    transform: translateY(-50%); /* Ajuste fino de la posición vertical */
+    color: var(--primary-gray-color); /* Color del texto */
+    pointer-events: none; /* Permite hacer clic en el input detrás del texto */
+    border: 1px solid var(--primary-gray-color); /* Borde transparente */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 0.2rem 0.2rem; /* Espacio interno: superior, derecho, inferior, izquierdo */
+    font-size: medium;
+}

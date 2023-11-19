@@ -1,0 +1,51 @@
+---
+import './SearchBarComponent.css';
+---
+
+<div class="search-container">
+    <input type="text" class="search-input" placeholder="Quick search..." />
+    <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+    <span class="search-hint">⌘ + K</span>
+</div>
+
+<script>
+
+	document.addEventListener('DOMContentLoaded', () => {
+        const searchHint = document.querySelector('.search-hint') as HTMLSpanElement;
+        const searchInput = document.querySelector('.search-input') as HTMLInputElement;
+        
+
+        // Controller for search input
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value;
+            console.localStorage(searchTerm);
+        });
+
+        searchInput.addEventListener('focus', () => { 
+            searchHint.textContent = 'ESC'; // Change hint to show user how to close search
+        });
+
+        // Event handler for when the search input is blurred
+        searchInput.addEventListener('blur', () => {
+            // Change hint back to show user how to open search
+            searchHint.textContent = '⌘ + K'; 
+        });
+    });
+
+    // Handle keydown events
+    document.addEventListener('keydown', (e) => {
+        // Select search input if user presses ⌘ + K
+        if ((e.key === 'k' && e.metaKey) || e.key === 'Escape') {
+            e.preventDefault()
+            const searchInput = document.querySelector('.search-input') as HTMLInputElement;
+            // If command + k is pressed, focus the search input.
+            // If ESC is pressed, blur the search input.
+            if (e.key === 'Escape') {
+                searchInput?.blur();
+            } else {
+                searchInput?.focus();
+            }
+        }        
+                
+    });
+	</script>
